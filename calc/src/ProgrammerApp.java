@@ -83,7 +83,7 @@ public class ProgrammerApp implements IApp {
 
     // Вывод результата во всех системах
     private void printAll(long value) {
-        System.out.println("\n РЕЗУЛЬТАТ");
+        System.out.println("\nРЕЗУЛЬТАТ");
         System.out.println("DEC: " + value);
         System.out.println("BIN: " + new BinarySystem().fromDecimal((int) value));
         System.out.println("OCT: " + new OctalSystem().fromDecimal((int) value));
