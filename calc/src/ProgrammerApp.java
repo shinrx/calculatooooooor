@@ -84,9 +84,24 @@ public class ProgrammerApp implements IApp {
     // Вывод результата во всех системах
     private void printAll(long value) {
         System.out.println("\nРЕЗУЛЬТАТ");
-        System.out.println("DEC: " + value);
-        System.out.println("BIN: " + new BinarySystem().fromDecimal((int) value));
-        System.out.println("OCT: " + new OctalSystem().fromDecimal((int) value));
-        System.out.println("HEX: " + new HexSystem().fromDecimal((int) value));
+
+        AbstractNumberSystem current = manager.getSystem();
+
+        // Сначала текущая система
+        System.out.println(current.getName() + ": " + current.fromDecimal((int) value));
+
+        // Остальные системы
+        AbstractNumberSystem[] systems = {
+                new DecimalSystem(),
+                new BinarySystem(),
+                new OctalSystem(),
+                new HexSystem()
+        };
+
+        for (AbstractNumberSystem sys : systems) {
+            if (!sys.getName().equals(current.getName())) {
+                System.out.println(sys.getName() + ": " + sys.fromDecimal((int) value));
+            }
+        }
     }
 }
